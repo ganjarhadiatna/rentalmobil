@@ -11,7 +11,7 @@
 #body #main {
 	grid-column: 2;
 	width: calc(100% - 40px);
-	padding: 0 20px;
+	padding: 20px;
 	margin: auto;
 }
 #body #main h1 {
@@ -79,8 +79,8 @@
 	position: relative;
 	width: 300px;
 	height: 40px;
-	box-shadow: 0 0 0 2px rgba(0,0,0,0.2);
-	border-radius: 3px;
+	border: 1px rgba(0,0,0,0.1) solid;
+	border-radius: 5px;
 	overflow: hidden;
 	margin: auto;
 	margin-bottom: 15px;
@@ -181,6 +181,12 @@
 	position: relative;
 	width: 100%;
 }
+.reservasi .frame-reservasi {
+	position: relative;
+	width: calc(100% - 40px);
+	padding: 20px;
+	margin-bottom: 20px;
+}
 .reservasi .side {
 	grid-column: 2;
 	position: relative;
@@ -197,17 +203,16 @@
 }
 .frame-reservasi {
 	position: relative;
-	width: calc(100% - 40px);
+	width: 100%;
+	color: #555;
+	padding-bottom: 15px;
 	background-color: #fff;
-	padding: 20px;
 	box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
-	margin: 20px 0;
 	border-radius: 5px;
 }
 .frame-reservasi .here {
 	position: relative;
 	width: 100%;
-	color: #555;
 }
 .frame-reservasi .here table {
 	width: 100%;
@@ -239,15 +244,19 @@
 .frame-reservasi .here .btn {
 	width: 100%;
 }
-.reservasi-side {
+.frame-reservasi .reservasi-side {
 	position: fixed;
 	width: 360px;
 }
 
 .room {
-	width: calc(100% - 40px);
+	position: relative;
+	width: 100%;
+	margin: auto;
 }
 .room .frame-reservasi {
+	position: relative;
+	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -266,18 +275,18 @@
 	width: 100%;
 	height: 40px;
 }
-.room .frame-reservasi .plus {
+.room .navigator {
 	width: 100%;
 	height: 50px;
 	margin-bottom: 10px;
 }
-.room .frame-reservasi .plus .panel-menu {
+.room .navigator .panel-menu {
 	display: inline-block;
 	vertical-align: top;
 	margin-left: 10px;
 	float: right;
 }
-.room .frame-reservasi .plus .btn {
+.room .navigator .btn {
 	width: 150px;
 	height: 40px;
 	display: inline-block;
@@ -316,19 +325,19 @@
 }
 
 .room table {
+	position: relative;
 	width: 100%;
-	border-top: 1px #ededed solid;
 }
 .room table tr {
 	border: 0;
 	border-bottom: 1px #ededed solid;
 }
 .room table tr th {
-	padding: 10px;
+	padding: 15px 0;
 	text-align: center;
 }
 .room table tr td {
-	padding: 10px;
+	padding: 10px 0;
 	text-align: center;
 	font-size: 14px;
 }

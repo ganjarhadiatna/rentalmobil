@@ -80,18 +80,18 @@ html {
 
 .txt {
 	position: relative;
-	width: 95%;
-	padding: 0 2.5%;
+	width: calc(100% - 30px);
+	padding: 0 15px;
 	height: 45px;
 	font-size: 14px;
-	border-radius: 3px;
+	border-radius: 5px;
 }
-.txt-main-color {
+.txt.txt-main-color {
 	background-color: #fff;
 	color: #555;
 	border: 1px rgba(0,0,0,0.1) solid;
 }
-.txt-main-color:focus {
+.txt.txt-main-color:focus {
 	background-color: #f0f0f0;
 }
 .txt[type="text"]:disabled {

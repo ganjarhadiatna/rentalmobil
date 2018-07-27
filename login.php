@@ -1,8 +1,22 @@
 <?php require 'config/url.php'; ?>
+<?php require 'config/session.php'; ?>
+
+<?php 
+	$ss = new session();
+	
+	if ($ss->get('idadmin') != '') {
+		header('Location: '.base_url('?side=home&path=home'));
+	}
+
+	//$ss->set('idadmin', 1);
+	
+	echo $ss->get('idadmin');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Rental Mobil - Login</title>
+	<title>Rental Mobil</title>
 	<meta charset="utf-8">
 	<meta name=description content="">
 	<meta name=viewport content="width=device-width, initial-scale=1">
@@ -32,16 +46,16 @@
 	        	var password = $('#password').val();
 	        	
 	        	$.ajax({
-	        		url: '<?php echo base_url('api/auth.php') ?>',
+	        		url: '<?php echo base_url('api/route.php?type=post&path=login') ?>',
 	        		type: 'post',
 	        		data: {'username': username, 'password': password},
 	        	})
 	        	.done(function(data) {
-	        		/*if (data === "success") {
-	        			window.location = '{{ url("/dashboard") }}';
+	        		if (data > 0) {
+	        			window.location = "<?php echo base_url('?side=home&path=home') ?>";
 	        		} else {
 	        			alert('Username atau Password salah, mohon ulangi kembali.');
-	        		}*/
+	        		}
 	        		console.log(data);
 	        	})
 	        	.fail(function(e) {
