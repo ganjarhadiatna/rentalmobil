@@ -54,7 +54,7 @@
 	        		} else {
 	        			alert('Username atau Password salah, mohon ulangi kembali.');
 	        		}
-	        		console.log(data);
+	        		//console.log(data);
 	        	})
 	        	.fail(function(e) {
 	        		console.log(e);

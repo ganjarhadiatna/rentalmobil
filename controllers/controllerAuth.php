@@ -6,9 +6,9 @@ class controllerAuth
 {
     function login($username, $password)
     {
+
     	$ss = new session();
     	$md = new modelAuth();
-
 
     	if (isset($username) && isset($password)) {
     		
@@ -37,9 +37,3 @@ class controllerAuth
     	return 'ok';
     }
 }
-
-/*$ss = new session();
-$n = new controllerAuth();
-$dt = $n->login('admin', 'admin');
-echo $dt;
-echo $ss->get('idadmin');*/

@@ -28,17 +28,20 @@
 	<script type="text/javascript" src="public/js/pikaday.js"></script>
 	<script type="text/javascript">
 		function logout() {
-        	$.ajax({
-        		url: '<?php echo base_url('api/route.php?type=get&path=logout') ?>',
-        	})
-        	.done(function(rest) {
-        		if (rest == 'ok') {
-        			window.location = "<?php echo base_url('login.php') ?>";
-        		}
-        	})
-        	.fail(function(e) {
-        		alert(e);
-        	});
+			var a = confirm('logout sekarang?');
+			if (a == true) {
+				$.ajax({
+	        		url: '<?php echo base_url('api/route.php?type=get&path=logout') ?>',
+	        	})
+	        	.done(function(rest) {
+	        		if (rest == 'ok') {
+	        			window.location = "<?php echo base_url('login.php') ?>";
+	        		}
+	        	})
+	        	.fail(function(e) {
+	        		alert(e);
+	        	});
+			}
         }
 		$(document).ready(function() {
 			var menu = '<?php echo $_GET['side'] ?>';
