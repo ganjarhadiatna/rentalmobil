@@ -4,10 +4,9 @@
 <?php 
 	$ss = new session();
 
-	if ($ss->get('idadmin') == '') {
+	if (empty($ss->get('idadmin'))) {
 		header('Location: '.base_url('login.php'));
 	}
-	echo $ss->get('idadmin');
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +54,7 @@
 			<ul id="side-menu">
 				<div class="here bdr-bottom">
 					<div class="usr">
-						<h2>Options</h2>
+						<h2>Options <?php echo $ss->get('idadmin'); ?></h2>
 					</div>
 				</div>
 				<div class="here">

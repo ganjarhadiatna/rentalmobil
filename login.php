@@ -3,14 +3,12 @@
 
 <?php 
 	$ss = new session();
-	
-	if ($ss->get('idadmin') != '') {
+
+	if (!empty($ss->get('idadmin'))) {
 		header('Location: '.base_url('?side=home&path=home'));
 	}
 
-	//$ss->set('idadmin', 1);
-	
-	echo $ss->get('idadmin');
+	$ss->get('idadmin');
 ?>
 
 <!DOCTYPE html>

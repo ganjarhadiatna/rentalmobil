@@ -17,7 +17,6 @@ class controllerAuth
     		if (is_array($rest)) {
     			
     			//setting session
-	    		$ss->start();
 	    		$ss->set('idadmin', $rest[0]);
 
 	    		return $ss->get('idadmin');
