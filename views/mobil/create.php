@@ -37,7 +37,7 @@
 		});
 
 		$.ajax({
-		  	url: '{{ url("/add/car/publish") }}',
+		  	url: '<?php echo base_url('api/route.php?type=post&path=new_car') ?>',
 			data: fd,
 			processData: false,
 			contentType: false,
@@ -47,16 +47,17 @@
 			}
 		})
 		.done(function(data) {
-		   	if (data === 'failed') {
+		   	/*if (data == 'failed') {
 		   		alert('Gagal menambahkan mobil.');
 		   		$('#btn-submit').val('Tambahkan Data');
 		   	} else {
-				window.location = '{{ url("/") }}';
-		   	}
+				window.location = '<?php echo base_url("?side=car&path=list_car"); ?>';
+		   	}*/
+		   	console.log(data);
 		})
 		.fail(function(data) {
-		  	alert('error terjadi, mohon ulangi lagi nanti.');
-		  	//console.log(data.responseJSON);
+		  	//alert('error terjadi, mohon ulangi lagi nanti.');
+		  	console.log(data);
 		  	$('#btn-submit').val('Tambahkan Data');
 		});
 

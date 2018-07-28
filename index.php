@@ -39,7 +39,8 @@
 	        		}
 	        	})
 	        	.fail(function(e) {
-	        		alert(e);
+	        		alert(e.statusText);
+	        		console.log(e);
 	        	});
 			}
         }
@@ -57,7 +58,7 @@
 			<ul id="side-menu">
 				<div class="here bdr-bottom">
 					<div class="usr">
-						<h2>Options <?php echo $ss->get('idadmin'); ?></h2>
+						<h2>Options</h2>
 					</div>
 				</div>
 				<div class="here">

@@ -7,19 +7,16 @@ class controllerAuth
     function login($username, $password)
     {
 
-    	$ss = new session();
-    	$md = new modelAuth();
-
     	if (isset($username) && isset($password)) {
     		
-    		$rest = $md->login($username, $password);
+    		$rest = modelAuth::login($username, $password);
 
     		if (is_array($rest)) {
     			
     			//setting session
-	    		$ss->set('idadmin', $rest[0]);
+	    		session::set('idadmin', $rest[0]);
 
-	    		return $ss->get('idadmin');
+	    		return session::get('idadmin');
 
     		} else {
     			return $rest;
@@ -32,8 +29,8 @@ class controllerAuth
 
     function logout()
     {
-    	$ss = new session();
-    	$ss->end();
+    	session::end();
+
     	return 'ok';
     }
 }

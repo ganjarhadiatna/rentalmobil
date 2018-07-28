@@ -2,9 +2,7 @@
 //include controllers
 require '../config/url.php';
 require '../controllers/controllerAuth.php';
-
-//define class
-$auth = new controllerAuth();
+require '../controllers/controllerMobil.php';
 
 
 //define route
@@ -18,8 +16,27 @@ if (isset($type) && isset($path)) {
 
 		if ($path == 'login') {
 		
-			echo $auth->login($_POST['username'], $_POST['password']);
+			echo controllerAuth::login(
+				$_POST['username'], 
+				$_POST['password']
+			);
 
+		}
+
+		if ($path == 'new_car') {
+			echo controllerMobil::create(
+				$_FILES['cover'], 
+				$_POST['nama'], 
+				$_POST['jenis'], 
+				$_POST['merk'], 
+				$_POST['warna'], 
+				$_POST['nomor_polisi'], 
+				$_POST['nomor_rangka'], 
+				$_POST['nomor_mesin'], 
+				$_POST['slinder'], 
+				$_POST['harga'], 
+				$_POST['tahun']
+			);
 		}
 
 	}
@@ -28,7 +45,7 @@ if (isset($type) && isset($path)) {
 	if ($type == 'get') {
 
 		if ($path == 'logout') {
-			echo $auth->logout();
+			echo controllerAuth::logout();
 		}
 
 	}

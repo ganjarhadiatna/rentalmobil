@@ -244,7 +244,7 @@
 .frame-reservasi .here .btn {
 	width: 100%;
 }
-.frame-reservasi .reservasi-side {
+.frame-reservasi.reservasi-side {
 	position: fixed;
 	width: 360px;
 }
