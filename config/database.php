@@ -8,7 +8,7 @@
 		public $conn = '';
 
 		//connection
-		public function cn()
+		function cn()
 		{
 			$this->conn = mysqli_connect(
 				$this->hostname, 
@@ -25,26 +25,44 @@
 				return "Failed to connect to MySQL: " . mysqli_connect_error();
 			}
 		}
-		public function cl()
+		function cl()
 		{
 			return $this->conn->close();
 		}
 
-		//get user
-		public function getAdmin()
+		//library
+		function query($q)
 		{
 			if ($this->cn()) {
-				$rest = $this->conn->query('select * from admin');
-				if ($rest->num_rows > 0) {
-					$data = json_encode($rest->fetch_array());
-					return $data;
-				}
-			} else {
-				return $this->conn->error;
-			}
-			$this->cl();
+				$rest = $this->conn->query($q);
+	            if ($rest) {
+	                return $rest;
+	            } else {
+	                return $this->conn->error;
+	            }
+	        } else {
+	            return $this->conn->error;
+	        }
+
+	        $this->cl();
 		}
 
+		function convert_array($data, $stt)
+		{
+			$prep = [];
+			foreach ($data as $key => $value) {
+				$prep[$key] = "'".$data[$key]."'";
+			}
+
+			if ($stt == 'column') {
+				return implode(', ', array_keys($data));
+			}
+
+			if ($stt == 'values') {
+				return implode(', ', array_values($prep));
+			}
+
+		}
 		
 	}
 	

@@ -47,17 +47,16 @@
 			}
 		})
 		.done(function(data) {
-		   	/*if (data == 'failed') {
-		   		alert('Gagal menambahkan mobil.');
-		   		$('#btn-submit').val('Tambahkan Data');
+		   	if (data == 'success') {
+		   		window.location = '<?php echo base_url("?side=car&path=list_car"); ?>';
 		   	} else {
-				window.location = '<?php echo base_url("?side=car&path=list_car"); ?>';
-		   	}*/
-		   	console.log(data);
+				alert(data);
+		   		$('#btn-submit').val('Tambahkan Data');
+		   	}
 		})
-		.fail(function(data) {
+		.fail(function(e) {
 		  	//alert('error terjadi, mohon ulangi lagi nanti.');
-		  	console.log(data);
+		  	console.log(e);
 		  	$('#btn-submit').val('Tambahkan Data');
 		});
 
