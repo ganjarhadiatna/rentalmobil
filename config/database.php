@@ -1,11 +1,10 @@
 <?php
-
 	class database
 	{
 		private $hostname = '127.0.0.1';
 		private $username = 'root';
-		private $password = 'delapanbelas18';
-		private $database = 'dbrental';
+		private $password = '';
+		private $db_name = 'db_rental_mobil';
 		public $conn = '';
 
 		//connection
@@ -15,7 +14,7 @@
 				$this->hostname, 
 				$this->username, 
 				$this->password, 
-				$this->database);
+				$this->db_name);
 			if ($this->conn) {
 				return true;
 			}

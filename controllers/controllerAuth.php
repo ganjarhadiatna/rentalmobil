@@ -1,6 +1,6 @@
 <?php
-require '../config/session.php';
-require '../models/modelAuth.php';
+require_once '../config/session.php';
+require_once '../models/modelAuth.php';
 
 class controllerAuth
 {
@@ -23,7 +23,7 @@ class controllerAuth
     		}
 
     	} else {
-    		return 'username or password undegined';
+    		return 'username or password undefined';
     	}
     }
 

@@ -1,12 +1,10 @@
-<?php require 'config/url.php'; ?>
-<?php require 'config/session.php'; ?>
-
 <?php 
-	$ss = new session();
+require_once 'config/url.php';
+require_once 'config/session.php';
 
-	if (empty($ss->get('idadmin'))) {
-		header('Location: '.base_url('login.php'));
-	}
+if (empty(session::get('idadmin'))) {
+	header('Location: '.base_url('login.php'));
+}
 ?>
 
 <!DOCTYPE html>

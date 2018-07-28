@@ -23,6 +23,7 @@ html {
 	padding: 0 15px;
 	cursor: pointer;
 	font-size: 15px;
+	font-weight: 500;
 	border-radius: 3px;
 	font-weight: 900;
 }

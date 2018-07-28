@@ -3,36 +3,35 @@ class session
 {
 	public function start()
 	{
-		/*if (is_null(session_start())) {
-			return session_start();
-		}*/
-		return session_start();
+		session_start();
+		ini_set('error_reporting', 0);
+		//ini_set('display_errors', 0);
 	}
 	public function set($path, $value)
 	{
-		$this->start();
+		self::start();
 		$_SESSION[$path] = $value;
 	}
 	public function get($path)
 	{
-		$this->start();
+		self::start();
 		if (isset($_SESSION[$path])) {
 			return $_SESSION[$path];
 		} else {
-			$this->set($path, '');
+			self::set($path, '');
 			return $_SESSION[$path];
 		}
 	}
 	public function cek($path)
 	{
-		$this->start();
+		self::start();
 		if (!isset($_SESSION[$path])) {
-			$this->set($path, '');
+			self::set($path, '');
 		}
 	}
 	public function end()
 	{
-		$this->start();
+		self::start();
 		session_destroy();
 	}
 }

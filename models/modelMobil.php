@@ -1,9 +1,4 @@
 <?php
-require '../config/database.php';
-
-/**
- * summary
- */
 class modelMobil
 {
     function create($data = '')

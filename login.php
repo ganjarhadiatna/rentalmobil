@@ -1,14 +1,10 @@
-<?php require 'config/url.php'; ?>
-<?php require 'config/session.php'; ?>
-
 <?php 
-	$ss = new session();
+require_once 'config/url.php';
+require_once 'config/session.php';
 
-	if (!empty($ss->get('idadmin'))) {
-		header('Location: '.base_url('?side=home&path=home'));
-	}
-
-	$ss->get('idadmin');
+if (!empty(session::get('idadmin'))) {
+	header('Location: '.base_url('?side=home&path=home'));
+}
 ?>
 
 <!DOCTYPE html>
@@ -52,9 +48,9 @@
 	        		if (data > 0) {
 	        			window.location = "<?php echo base_url('?side=home&path=home') ?>";
 	        		} else {
-	        			alert('Username atau Password salah, mohon ulangi kembali.');
+	        			//alert('Username atau Password salah, mohon ulangi kembali.');
+	        			alert(data);
 	        		}
-	        		//console.log(data);
 	        	})
 	        	.fail(function(e) {
 	        		console.log(e);

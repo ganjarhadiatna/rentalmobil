@@ -1,6 +1,8 @@
 <?php
+//include config
+require '../config/database.php';
+
 //include controllers
-require '../config/url.php';
 require '../controllers/controllerAuth.php';
 require '../controllers/controllerMobil.php';
 

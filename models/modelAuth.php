@@ -1,13 +1,6 @@
 <?php
-require '../config/database.php';
-
-/**
- * summary
- */
 class modelAuth
 {
- 	//auth
-
  	public function login($username, $password)
 	{
 		$cn = new database();
@@ -17,7 +10,7 @@ class modelAuth
 				return $q->fetch_array();
 			}
 			else if (empty($q->num_rows)) {
-				return 'empty';
+				return 'Username atau password salah';
 			} else {
 				return $cn->conn->error;
 			}
