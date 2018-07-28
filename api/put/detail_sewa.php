@@ -1,7 +1,7 @@
 <?php
 
-require("../../koneksi.php");
-require("../../lib-yudi.php");
+require("../koneksi.php");
+require("../lib-yudi.php");
 
 $id             = $_POST['id_pinjam'];
 $tgl_pinjam     = $_POST['tgl_pinjam'];

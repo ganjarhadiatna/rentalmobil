@@ -1,7 +1,7 @@
 <?php
 
-require("../../koneksi.php");
-require("../../lib-yudi.php");
+require("../koneksi.php");
+require("../lib-yudi.php");
 
 $nomor_identitas = $_POST['nomor_identitas'];
 $nama = $_POST['nama'];

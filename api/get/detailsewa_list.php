@@ -1,7 +1,7 @@
 <?php
 
-require("../../koneksi.php");
-require("../../lib-yudi.php");
+require("../koneksi.php");
+require("../lib-yudi.php");
 
 $sql = "SELECT * FROM detail_sewa";
 $result = mysqli_query($koneksi,$sql);

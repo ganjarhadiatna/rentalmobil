@@ -1,7 +1,7 @@
 <?php
 
-require("../../koneksi.php");
-require("../../lib-yudi.php");
+require("../koneksi.php");
+require("../lib-yudi.php");
 
 $plat_nomor = $_POST['plat_nomor'];
 $no_rangka = $_POST['no_rangka'];
