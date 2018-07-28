@@ -30,7 +30,8 @@ class controllerMobil
                 $chrc = array('[',']','@',' ','+','-','#','*','<','>','_','(',')',';',
                 ',','&','%','$','!','`','~','=','{','}','/',':','?','"',"'",'^');
                 $oldname = $cover['name'];
-                $newname = '../public/img/mobil/'.time().str_replace($chrc, '', $oldname);
+                $newname = time().str_replace($chrc, '', $oldname);
+                $target_file = '../public/img/mobil/'.$newname;
 
                 //rename($cover['tmp_name'], $newname);
 
@@ -39,7 +40,7 @@ class controllerMobil
 
                 //move an rename image
                 //rename($cover['tmp_name'], $newname) pindahkan lagi ke if
-                if (rename($cover['tmp_name'], $newname)) {
+                if (rename($cover['tmp_name'], $target_file)) {
                     //saving to database
                     $data = [
                         'foto' => $newname,
@@ -77,8 +78,13 @@ class controllerMobil
         }
     }
 
-    function list()
+    function list($limit, $offset)
     {
-        //daftar mobil
+        $rest = modelMobil::list($limit, $offset);
+        if ($rest) {
+            return json_encode($rest);
+        }
     }
 }
+
+//echo controllerMobil::list(10, 0);

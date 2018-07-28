@@ -8,7 +8,7 @@
 	}
 	function publish() {
 		var fd = new FormData();
-		var cover = $('#foto')[0].files[0];
+		var foto = $('#foto')[0].files[0];
 		var nama = $('#nama-mobil').val();
 		var jenis = $('#jenis-mobil').val();
 		var merk = $('#merk-mobil').val();
@@ -20,16 +20,16 @@
 		var harga = $('#harga-sewa').val();
 		var tahun = $('#tahun-mobil').val();
 
-		fd.append('cover', cover);
+		fd.append('foto', foto);
 		fd.append('nama', nama);
 		fd.append('jenis', jenis);
 		fd.append('merk', merk);
 		fd.append('warna', warna);
-		fd.append('nomor_polisi', nomor_polisi);
-		fd.append('nomor_rangka', nomor_rangka);
-		fd.append('nomor_mesin', nomor_mesin);
-		fd.append('slinder', slinder);
-		fd.append('harga', harga);
+		fd.append('plat_nomor', nomor_polisi);
+		fd.append('no_rangka', nomor_rangka);
+		fd.append('no_mesin', nomor_mesin);
+		fd.append('isi_silinder', slinder);
+		fd.append('harga_sewa', harga);
 		fd.append('tahun', tahun);
 		
 		$.each($('#form-publish').serializeArray(), function(a, b) {
@@ -37,7 +37,7 @@
 		});
 
 		$.ajax({
-		  	url: '<?php echo base_url('api/route.php?type=post&path=new_car') ?>',
+		  	url: '<?php echo base_url('api/post/mobil.php') ?>',
 			data: fd,
 			processData: false,
 			contentType: false,
@@ -47,12 +47,13 @@
 			}
 		})
 		.done(function(data) {
-		   	if (data == 'success') {
-		   		window.location = '<?php echo base_url("?side=car&path=list_car"); ?>';
-		   	} else {
+			if (data.status == 'OK') {
+				window.location = '<?php echo base_url("?side=car&path=list_car"); ?>'
+			} else {
 				alert(data);
 		   		$('#btn-submit').val('Tambahkan Data');
-		   	}
+			}
+		   	//console.log(data);
 		})
 		.fail(function(e) {
 		  	//alert('error terjadi, mohon ulangi lagi nanti.');
@@ -125,7 +126,7 @@
 					</div>
 				</div>
 				<div class="side">
-					<div class="frame-reservasi reservasi-side">
+					<div class="frame-reservasi">
 						<div class="here">
 							<H2>Pilih Gambar</H2>
 						</div>
