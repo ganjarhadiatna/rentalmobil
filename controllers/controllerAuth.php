@@ -1,5 +1,4 @@
 <?php
-require_once '../config/session.php';
 require_once '../models/modelAuth.php';
 
 class controllerAuth

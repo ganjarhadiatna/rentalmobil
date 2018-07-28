@@ -1,11 +1,11 @@
 <?php
 class modelMobil
 {
-    function create($data = '')
+    function create($data)
     {
     	$cn = new database();
 		if ($cn->cn()) {
-			return 'connection success';
+			return json_encode($data);
 		} else {
 			return $cn->conn->error;
 		}

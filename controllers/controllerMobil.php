@@ -1,8 +1,6 @@
 <?php
-require '../models/modelMobil.php';
-/**
- * summary
- */
+require_once '../models/modelMobil.php';
+
 class controllerMobil
 {
     function create (
@@ -19,7 +17,9 @@ class controllerMobil
     	$tahun = ''
     )
     {
+        //move image
 
+        //saving to database
     	$data = [
     	    'cover' => $cover,
     	    'nama' => $nama,
@@ -33,8 +33,13 @@ class controllerMobil
     	    'harga' => $harga,
     	    'tahun' => $tahun
     	];
-    	return json_encode($data);
+
+        $rest = modelMobil::create($data);
+
+        if ($rest) {
+            return $rest;
+        } else {
+            return 'Failed to adding car';
+        }
     }
 }
-
-//echo controllerMobil::create('ahuy');

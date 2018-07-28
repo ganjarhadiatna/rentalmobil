@@ -1,10 +1,11 @@
 <?php
 //include config
-require '../config/database.php';
+require_once '../config/session.php';
+require_once '../config/database.php';
 
 //include controllers
-require '../controllers/controllerAuth.php';
-require '../controllers/controllerMobil.php';
+require_once '../controllers/controllerAuth.php';
+require_once '../controllers/controllerMobil.php';
 
 
 //define route
