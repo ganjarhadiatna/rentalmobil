@@ -8,11 +8,13 @@ $id = $_GET['id'];
 $sql = "DELETE FROM mobil WHERE id_mobil = $id";
 $result = mysqli_query($koneksi,$sql);
 
+//gambar belum bisa dihapus
+
 if ($result)
 {
     echo json_encode([
         'status'    => 'OK',
-        'message'   => '',
+        'message'   => 'Mobil berhasil dihapus',
     ]);
 }
 else

@@ -1,5 +1,5 @@
 <?php
-
+require("../../config/url.php");
 require("../koneksi.php");
 require("../lib-yudi.php");
 
@@ -13,23 +13,59 @@ $warna = $_POST['warna'];
 $isi_silinder = $_POST['isi_silinder'];
 $tahun = $_POST['tahun'];
 $harga_sewa = $_POST['harga_sewa'];
-$foto = $_POST['foto'];
-$status = $_POST['status'];
+$foto = $_FILES['foto'];
+$status = 'Bebas'; //default : bebas
 
-$sql = "insert into mobil values('', '$plat_nomor', '$no_rangka', '$no_mesin', '$nama', '$jenis', '$merk', '$warna', '$isi_silinder', '$tahun', '$harga_sewa', '$foto', '$status')";
-$result = mysqli_query($koneksi,$sql);
+//check image
+$check = file_exists($foto['tmp_name']);
 
-if ($result)
+if ($check) 
 {
-    echo json_encode([
-        'status'    => 'OK',
-        'message'   => '',
-    ]);
-}
-else
+
+	$chrc = array('[',']','@',' ','+','-','#','*','<','>','_','(',')',';',',','&','%','$','!','`','~','=','{','}','/',':','?','"',"'",'^');
+	$oldname = $foto['name'];
+	$newname = time().str_replace($chrc, '', $oldname);
+	$target_file = '../../public/img/mobil/'.$newname;
+
+	//move and rename foto
+	if (rename($foto['tmp_name'], $target_file)) 
+	{
+
+		$sql = "insert into mobil values('', '$plat_nomor', '$no_rangka', '$no_mesin', '$nama', '$jenis', '$merk', '$warna', '$isi_silinder', '$tahun', '$harga_sewa', '$newname', '$status')";
+
+		$result = mysqli_query($koneksi,$sql);
+
+		if ($result)
+		{
+		    echo json_encode([
+		        'status'    => 'OK',
+		        'message'   => '',
+		    ]);
+		}
+		else
+		{
+		    echo json_encode([
+		        'status'    => 'ERROR',
+		        'message'   => mysqli_error($koneksi),
+		    ]);
+		}
+		
+	}
+	else 
+	{
+		echo json_encode([
+	        'status'    => 'ERROR',
+	        'message'   => 'Gagal mengupload gambar',
+	    ]);
+	}
+
+} 
+else 
 {
-    echo json_encode([
+
+	echo json_encode([
         'status'    => 'ERROR',
-        'message'   => mysqli_error($koneksi),
+        'message'   => 'Gambar tidak ada',
     ]);
+
 }

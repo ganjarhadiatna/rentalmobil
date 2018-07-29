@@ -1,4 +1,6 @@
 <?php
+require_once '../config/database.php';
+
 class modelMobil
 {
     function create($data)
@@ -9,12 +11,13 @@ class modelMobil
     		return $rest;
     	}
     }
-    function list()
+    function list($limit, $offset)
     {
     	$cn = new database();
-    	$rest = $cn->query("select * from mobil");
+    	$rest = $cn->query_select("select id_mobil, foto, nama, plat_nomor, merk, warna, harga_sewa, status from mobil limit ".$limit." offset ".$offset);
     	if ($rest) {
     		return $rest;
     	}
+
     }
 }

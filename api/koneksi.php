@@ -3,7 +3,7 @@ $koneksi=mysqli_connect(
     "localhost",
     "root",
     "",
-    "tubes_atol_rental"
+    "db_rental_mobil"
 );
 
 

@@ -335,6 +335,7 @@
 .room table tr th {
 	padding: 15px 0;
 	text-align: center;
+	font-size: 14px;
 }
 .room table tr td {
 	padding: 10px 0;
@@ -342,9 +343,10 @@
 	font-size: 14px;
 }
 .room table .foto {
+	border-radius: 5px;
 	width: 80px;
 	height: 80px;
-	background-size: 100%;
+	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 }

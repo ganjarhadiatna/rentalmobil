@@ -46,6 +46,30 @@
 
 	        $this->cl();
 		}
+		function query_select($q)
+		{
+			if ($this->cn()) {
+				$rest = $this->conn->query($q);
+				if ($rest) {
+		    		if ($rest->num_rows > 0) {
+						$rows = [];
+		    			while ($r = $rest->fetch_assoc()) {
+		    				$rows[] = $r;
+		    			}
+						return $rows;
+					}
+					else if (empty($rest->num_rows)) {
+						return 'Username atau password salah';
+					} else {
+						return $cn->conn->error;
+					}
+		    	}
+	        } else {
+	            return $this->conn->error;
+	        }
+
+	        $this->cl();
+		}
 
 		function convert_array($data, $stt)
 		{

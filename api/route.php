@@ -47,6 +47,11 @@ if (isset($type) && isset($path)) {
 	//list API get
 	if ($type == 'get') {
 
+		//mobil
+		if ($path == 'list_car') {
+			echo controllerMobil::list($_GET['limit'], $_GET['offset']);
+		}
+
 		if ($path == 'logout') {
 			echo controllerAuth::logout();
 		}
