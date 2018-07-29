@@ -287,10 +287,7 @@
 				<div class="frame-car" id="frame-car-<?php echo $car['id_mobil']; ?>" onclick="chooseCar('<?php echo $car['id_mobil']; ?>')">
 					<div class="fc-place">
 						<div class="col-1">
-							<a href="">
-								<div class="top" title="lihat detail" style="background-image: url('<?php echo base_url('public/img/mobil/'.$car['foto']); ?>');">
-								</div>
-							</a>
+							<div class="top" title="lihat detail" style="background-image: url('<?php echo base_url('public/img/mobil/'.$car['foto']); ?>');"></div>
 						</div>
 						<div class="col-2">
 							<div class="mid">
@@ -348,10 +345,7 @@
 				<div class="frame-car" id="frame-profile-<?php echo $profile['id_penyewa']; ?>" onclick="chooseProfile('<?php echo $profile['id_penyewa']; ?>')">
 					<div class="fc-place">
 						<div class="col-1">
-							<a href="">
-								<div class="top" title="lihat detail" style="background-image: url('<?php echo base_url('public/img/peminjam/'.$profile['foto']); ?>');">
-								</div>
-							</a>
+							<div class="top" title="lihat detail" style="background-image: url('<?php echo base_url('public/img/peminjam/'.$profile['foto']); ?>');"></div>
 						</div>
 						<div class="col-2">
 							<div class="mid">

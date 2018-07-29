@@ -15,9 +15,13 @@ $id_mobil = $_POST['id_mobil'];
 $status_sewa = 'Belum Selesai';
 
 $sql = "insert into sewa values('', '$tgl_pinjam', '$tgl_akhir_pinjam', '$harga_sewa', '$lama_pinjam', '$total_bayar', '$id_admin', '$id_penyewa', '$id_mobil', '$status_sewa')";
-$result = mysqli_query($koneksi,$sql);
 
-if ($result)
+$result = mysqli_query($koneksi, $sql);
+
+$sql2 = "update mobil set status='Disewa' WHERE id_mobil = $id_mobil";
+$result2 = mysqli_query($koneksi, $sql2);
+
+if ($result && $result2)
 {
     echo json_encode([
         'status'    => 'OK',
