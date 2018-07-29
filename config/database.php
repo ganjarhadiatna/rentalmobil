@@ -1,4 +1,9 @@
 <?php
+	/*
+	--
+	Code by Ganjar Hadiatna
+	--
+	*/
 	class database
 	{
 		private $hostname = '127.0.0.1';

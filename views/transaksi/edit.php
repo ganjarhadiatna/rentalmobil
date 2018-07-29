@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Rental - Daftar Mobil</title>
-
-	<script type="text/javascript" src="public/js/jquery.js"></script>
-
-</head>
-<body>
 <script type="text/javascript">
 	function loadCover() {
 		var OFReader = new FileReader();
@@ -32,13 +23,15 @@
 		fd.append('harga_sewa', harga_sewa);
 		fd.append('total_bayar', total_bayar);
 		fd.append('status_sewa', status_sewa);
+
 		$.each($('#form-publish').serializeArray(), function(a, b) {
 		   	fd.append(b.name, b.value);
 		});
 
 		$.ajax({
-		  	url: '{{ url("/add/transaction/edit") }}',
+		  	url: '<?php echo base_url("api/put/sewa.php"); ?>',
 			data: fd,
+			dataType: 'json',
 			processData: false,
 			contentType: false,
 			type: 'post',
@@ -47,11 +40,11 @@
 			}
 		})
 		.done(function(data) {
-		   	if (data === 'failed') {
-		   		alert('Gagal mengubah data Transaksi. Data yang dimasukan masih sama seperti sebelumnya.');
-		   		$('#btn-submit').val('Simpan Kembali');
+		   	if (data.status == 'OK') {
+		   		window.location = '?path=detail_transaction&id_transaction='+id_sewa;
 		   	} else {
-				window.location = '{{ url("/data/transaction/detail/") }}'+'/'+data;
+				alert(data.message);
+		   		$('#btn-submit').val('Simpan Kembali');
 		   	}
 		})
 		.fail(function(data) {
@@ -128,10 +121,21 @@
         });
     });
 </script>
-<div id="body">
-	<?php require "side.php"; ?>
-	<div id="main">
-		<h1>Ubah Data Transaksi</h1>
+<div>
+	<div>
+	<?php 
+		$rest = file_get_contents(base_url('api/get/sewa.php?id='.$_GET['id_transaction'])); 
+		$data = json_decode($rest, true);
+	?>
+		
+	<?php if ($data['status'] == 'ERROR') { ?>
+
+		<h1 class="pad-bot-20px"><?php echo $data['message']; ?></h1>	
+
+	<?php } else { ?>
+		
+		<?php $dt = $data[0]; ?>
+
 		<!--butuh data mobil-->
 		<form id="form-publish" method="post" action="javascript:void(0)" enctype="multipart/form-data" onsubmit="publish()">
 			<div>
@@ -143,33 +147,38 @@
 							</div>
 							<div class="here">
 								<p>ID Sewa</p>
-								<input type="text" name="id-sewa" placeholder="" class="txt txt-main-color" id="id-sewa" required="true" value="" disabled="true">
+								<input type="text" name="id-sewa" placeholder="" class="txt txt-main-color" id="id-sewa" required="true" value="<?php echo $dt['id_sewa']; ?>" disabled="true">
 							</div>
 							<div class="here">
 								<p>Tanggal Pinjam</p>
-								<input type="text" name="tgl-pinjam" placeholder="" class="date-picker txt txt-main-color" id="tgl-pinjam" required="true" value="">
+								<input type="text" name="tgl-pinjam" placeholder="" class="date-picker txt txt-main-color" id="tgl-pinjam" required="true" value="<?php echo $dt['tgl_pinjam']; ?>">
 							</div>
 							<div class="here">
 								<p>Tanggal Akhir Pinjam</p>
-								<input type="text" name="tgl-akhir-pinjam" placeholder="" class="date-picker txt txt-main-color" id="tgl-akhir-pinjam" required="true" value="">
+								<input type="text" name="tgl-akhir-pinjam" placeholder="" class="date-picker txt txt-main-color" id="tgl-akhir-pinjam" required="true" value="<?php echo $dt['tgl_akhir_pinjam']; ?>">
 							</div>
 							<div class="here">
 								<p>Lama Pinjam</p>
-								<input type="text" name="lama-pinjam" placeholder="" class="txt txt-main-color" id="lama-pinjam" required="true" value="" disabled="true">
+								<input type="text" name="lama-pinjam" placeholder="" class="txt txt-main-color" id="lama-pinjam" required="true" value="<?php echo $dt['lama_pinjam']; ?>" disabled="true">
 							</div>
 							<div class="here">
 								<p>Harga Sewa</p>
-								<input type="text" name="harga-sewa" placeholder="" class="txt txt-main-color" id="harga-sewa" required="true" value="" disabled="true">
+								<input type="text" name="harga-sewa" placeholder="" class="txt txt-main-color" id="harga-sewa" required="true" value="<?php echo $dt['harga_sewa']; ?>" disabled="true">
 							</div>
 							<div class="here">
 								<p>Total Pembayaran</p>
-								<input type="text" name="total-biaya" placeholder="" class="txt txt-main-color" id="total-biaya" required="true" value="" disabled="true">
+								<input type="text" name="total-biaya" placeholder="" class="txt txt-main-color" id="total-biaya" required="true" value="<?php echo $dt['total_bayar']; ?>" disabled="true">
 							</div>
 							<div class="here">
 								<p>Status Transaksi</p>
 								<select class="select" id="status-sewa">
-									<option value="Selesai">Selesai</option>
-									<option value="Belum Selesai" selected="true">Belum Selesai</option>
+									<?php if ($dt['status_sewa'] == 'Selesai') { ?>
+										<option value="Selesai" selected="true">Selesai</option>
+										<option value="Belum Selesai">Belum Selesai</option>
+									<?php } else { ?>
+										<option value="Selesai">Selesai</option>
+										<option value="Belum Selesai" selected="true">Belum Selesai</option>
+									<?php } ?>
 								</select>
 							</div>
 						</div>
@@ -186,8 +195,10 @@
 					</div>
 				</div>
 			</div>
+		
 		</form>
+		
+		<?php } ?>
+
 	</div>
 </div>
-</body>
-</html>

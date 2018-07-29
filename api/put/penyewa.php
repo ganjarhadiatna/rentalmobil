@@ -10,10 +10,10 @@ $email = $_POST['email'];
 $alamat = $_POST['alamat'];
 $jenis_kelamin = $_POST['jenis_kelamin'];
 $telp = $_POST['telp'];
-$foto = $_POST['foto'];
+//$foto = $_POST['foto'];
 $status_member = $_POST['status_member'];
 
-$sql    = "update penyewa set nomor_identitas=$nomor_identitas, nama=$nama, email=$email, alamat=$alamat, jenis_kelamin=$jenis_kelamin, telp=$telp, foto=$foto, status_member=$status_member WHERE id_penyewa = $id";
+$sql    = "update penyewa set nomor_identitas='$nomor_identitas', nama='$nama', email='$email', alamat='$alamat', jenis_kelamin='$jenis_kelamin', telp='$telp', status_member='$status_member' WHERE id_penyewa = '$id'";
 $result = mysqli_query($koneksi,$sql);
 
 if ($result)

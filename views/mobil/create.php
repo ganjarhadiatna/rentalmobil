@@ -49,7 +49,7 @@
 		})
 		.done(function(data) {
 			if (data.status == 'OK') {
-				window.location = '<?php echo base_url("?side=car&path=list_car"); ?>'
+				window.location = '<?php echo base_url("?side=car&path=list_car"); ?>';
 			} else {
 				alert(data.message);
 		   		$('#btn-submit').val('Tambahkan Data');
@@ -72,18 +72,18 @@
 				<div class="main">
 					<div class="frame-reservasi">
 						<div class="here">
-							<H2>Data Publik Mobil</H2>
+							<H2>Data Publik Kendaraan</H2>
 						</div>
 						<div class="here">
-							<p>Nama Mobil</p>
+							<p>Nama Kendaraan</p>
 							<input type="text" name="nama" placeholder="" class="txt txt-main-color" id="nama-mobil" required="true">
 						</div>
 						<div class="here">
-							<p>Jenis Mobil</p>
+							<p>Jenis Kendaraan</p>
 							<input type="text" name="jenis" placeholder="" class="txt txt-main-color" id="jenis-mobil" required="true">
 						</div>
 						<div class="here">
-							<p>Merk Mobil</p>
+							<p>Merk Kendaraan</p>
 							<input type="text" name="merk" placeholder="" class="txt txt-main-color" id="merk-mobil" required="true">
 						</div>
 						<div class="here">
@@ -93,7 +93,7 @@
 					</div>
 					<div class="frame-reservasi">
 						<div class="here">
-							<H2>Data Inti Mobil</H2>
+							<H2>Data Inti Kendaraan</H2>
 						</div>
 						<div class="here">
 							<p>Nomor Polisi</p>
@@ -127,7 +127,7 @@
 					</div>
 				</div>
 				<div class="side">
-					<div class="frame-reservasi">
+					<div class="frame-reservasi reservasi-side">
 						<div class="here">
 							<H2>Pilih Gambar</H2>
 						</div>

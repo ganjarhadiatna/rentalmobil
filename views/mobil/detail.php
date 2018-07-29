@@ -3,7 +3,7 @@
 	var id = '<?php echo $_GET['id_car']; ?>';
 
 	function deleteMobil(id_mobil) {
-		var a = confirm('Yakin ingin menghapus mobil ini?');
+		var a = confirm('Yakin ingin menghapus kendaraan ini?');
 			if (a == true) {
 
 			$.ajax({
@@ -14,8 +14,7 @@
 			})
 			.done(function(rest) {
 				if (rest.status == 'OK') {
-					$('#place').html('');
-					getCar(10, 0);
+					window.location = '<?php echo base_url("?side=car&path=list_car"); ?>';
 				} else {
 					alert(rest.message);
 				}
@@ -67,8 +66,6 @@
 		
 		<?php $car = $data[0]; ?>
 
-		<h1 class="pad-bot-20px">Detail Mobil</h1>
-		<div class="pad-bot-20px"></div>
 		<div>
 			<div class="reservasi">
 				<div class="main">
@@ -176,17 +173,11 @@
 					</div>
 				</div>
 				<div class="side">
-					<div class="frame-reservasi">
+					<div class="frame-reservasi reservasi-side">
 						<div class="here">
 							<div class="foto-detail" style="background-image: url(<?php echo base_url('public/img/mobil/'.$car['foto']) ?>); background-color: #f0f0f0;"></div>
 						</div>
 						<div class="here">
-							<?php if ($car['status'] == 'Bebas') { ?>
-								<button class="btm btn btn-main-color" onclick="addBook('<?php echo $car["id_mobil"] ?>')">
-									Pesan Mobil
-								</button>
-								<div class="pad-bot-15px"></div>
-							<?php } ?>
 							<a href="<?php echo base_url('?path=edit_car&id_car='.$car['id_mobil']) ?>">
 								<button class="btm btn btn-sekunder-color" onclick="editMobil('<?php echo $car["id_mobil"] ?>')">Ubah</button>
 							</a>

@@ -27,6 +27,11 @@ html {
 	font-weight: 500;
 	border-radius: 5px;
 }
+.btn-circle {
+	width: 45px;
+	padding: 0 0;
+	border-radius: 100%;
+}
 .btn-main-color {
 	background-color: #2980b9;
 	color: #fff;
@@ -97,6 +102,11 @@ html {
 }
 .txt[type="text"]:disabled {
 	background-color: #f0f0f0;
+}
+.editable {
+	padding: 15px;
+	min-height: 45px;
+	height: auto;
 }
 
 .padding-bottom {

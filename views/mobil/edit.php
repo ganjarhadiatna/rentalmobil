@@ -80,9 +80,6 @@
 		<?php $car = $data[0]; ?>
 		<div>
 
-			<h1 class="pad-bot-20px">Ubah Data Mobil</h1>
-			<div class="pad-bot-20px"></div>
-
 			<!--butuh data mobil-->
 			<form id="form-publish" method="post" action="javascript:void(0)" enctype="multipart/form-data" onsubmit="publish()">
 				<div>
@@ -181,7 +178,7 @@
 							</div>
 						</div>
 						<div class="side">
-							<div class="frame-reservasi">
+							<div class="frame-reservasi reservasi-side">
 								<div class="here">
 									<H2>Gambar Tidak Dapat Diubah</H2>
 								</div>

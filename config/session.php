@@ -1,4 +1,9 @@
 <?php 
+/*
+--
+Code by Ganjar Hadiatna
+--
+*/
 class session
 {
 	public function start()

@@ -26,14 +26,17 @@ if (isset($username) && isset($password))
 			echo json_encode([
 		        'status'    => 'OK',
 		        'message'   => session::get('idadmin'),
-		    ]);	
+		    ]);
+
 		}
 		if (empty($rest->num_rows))
 		{
+			
 			echo json_encode([
 		        'status'    => 'ERROR',
 		        'message'   => 'Username atau Password yang Anda Masukan Salah',
 		    ]);
+		    
 		}
 
 	}

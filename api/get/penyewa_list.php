@@ -3,6 +3,9 @@
 require("../koneksi.php");
 require("../lib-yudi.php");
 
+//$limit = $_GET['limit'];
+//$offset = $_GET['offset'];
+
 $sql = "SELECT * FROM penyewa";
 $result = mysqli_query($koneksi,$sql);
 

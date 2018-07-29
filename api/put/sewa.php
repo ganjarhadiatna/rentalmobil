@@ -9,11 +9,26 @@ $tgl_akhir_pinjam = $_POST['tgl_akhir_pinjam'];
 $harga_sewa = $_POST['harga_sewa'];
 $lama_pinjam = $_POST['lama_pinjam'];
 $total_bayar = $_POST['total_bayar'];
-$id_admin = $_POST['id_admin'];
-$id_penyewa = $_POST['id_penyewa'];
-$id_mobil = $_POST['id_mobil'];
+$status_sewa = $_POST['status_sewa'];
 
-$sql = "update sewa set tgl_pinjam=$tgl_pinjam, tgl_akhir_pinjam=$tgl_akhir_pinjam, harga_sewa=$harga_sewa, lama_pinjam=$lama_pinjam, total_bayar=$total_bayar, id_admin=$id_admin, id_penyewa=$id_penyewa WHERE id_sewa = $id";
+/*$id_admin = $_POST['id_admin'];
+$id_penyewa = $_POST['id_penyewa'];
+$id_mobil = $_POST['id_mobil'];*/
+
+$sql = "
+	UPDATE 
+		sewa 
+	SET 
+		tgl_pinjam='$tgl_pinjam', 
+		tgl_akhir_pinjam='$tgl_akhir_pinjam', 
+		harga_sewa='$harga_sewa', 
+		lama_pinjam='$lama_pinjam', 
+		total_bayar='$total_bayar', 
+		status_sewa='$status_sewa'
+	WHERE 
+		id_sewa = $id
+";
+
 $result = mysqli_query($koneksi,$sql);
 
 if ($result)

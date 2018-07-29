@@ -69,12 +69,25 @@ if (empty(session::get('idadmin'))) {
 						</li>
 					</a>
 				</div>
+
 				<div class="here">
 					<strong>Add</strong>
-					<a href="<?php echo base_url('?side=add&path=new_car'); ?>">
-						<li id="add">
+					<a href="<?php echo base_url('?side=add_car&path=new_car'); ?>">
+						<li id="add_car">
 							<span class="icn fa fa-lg fa-plus"></span>
-							<span class="ttl">Tambah Mobil</span>
+							<span class="ttl">Tambah Kendaraan</span>
+						</li>
+					</a>
+					<a href="<?php echo base_url('?side=add_customer&path=new_customer'); ?>">
+						<li id="add_customer">
+							<span class="icn fa fa-lg fa-user-plus"></span>
+							<span class="ttl">Tambah Peminjam</span>
+						</li>
+					</a>
+					<a href="<?php echo base_url('?side=add_transaction&path=new_transaction'); ?>">
+						<li id="add_transaction">
+							<span class="icn fa fa-lg fa-cart-plus"></span>
+							<span class="ttl">Tambah Transaksi</span>
 						</li>
 					</a>
 				</div>
@@ -83,18 +96,18 @@ if (empty(session::get('idadmin'))) {
 					<a href="<?php echo base_url('?side=car&path=list_car'); ?>">
 						<li id="car">
 							<span class="icn fa fa-lg fa-car"></span>
-							<span class="ttl">Daftar Mobil</spamn>
+							<span class="ttl">Daftar Kendaraan</spamn>
 						</li>
 					</a>
-					<a href="<?php echo base_url('?side=booking&path=list_customer'); ?>">
-						<li id="booking">
+					<a href="<?php echo base_url('?side=customer&path=list_customer'); ?>">
+						<li id="customer">
 							<span class="icn fa fa-lg fa-users"></span>
-							<span class="ttl">Daftar Penyewa</spamn>
+							<span class="ttl">Daftar Peminjam</spamn>
 						</li>
 					</a>
 					<a href="<?php echo base_url('?side=transaction&path=list_transaction'); ?>">
 						<li id="transaction">
-							<span class="icn fa fa-lg fa-line-chart"></span>
+							<span class="icn fa fa-lg fa-shopping-cart"></span>
 							<span class="ttl">Daftar Transaksi</spamn>
 						</li>
 					</a>
@@ -130,11 +143,32 @@ if (empty(session::get('idadmin'))) {
 				include 'views/mobil/edit.php';
 			}
 
+			//customer
+			if ($path == 'new_customer') {
+				include 'views/penyewa/create.php';
+			}
 			if ($path == 'list_customer') {
 				include 'views/penyewa/list.php';
 			}
+			if ($path == 'detail_customer') {
+				include 'views/penyewa/detail.php';
+			}
+			if ($path == 'edit_customer') {
+				include 'views/penyewa/edit.php';
+			}
+
+			//transaction
+			if ($path == 'new_transaction') {
+				include 'views/transaksi/create.php';
+			}
 			if ($path == 'list_transaction') {
 				include 'views/transaksi/list.php';
+			}
+			if ($path == 'detail_transaction') {
+				include 'views/transaksi/detail.php';
+			}
+			if ($path == 'edit_transaction') {
+				include 'views/transaksi/edit.php';
 			}
 
 			if (is_null($path)) {

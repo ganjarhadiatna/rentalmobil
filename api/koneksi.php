@@ -3,11 +3,11 @@ $koneksi=mysqli_connect(
     "localhost",
     "root",
     "",
-    "db_rental_mobil"
+    "10115107_penyewaankendaraan"
 );
 
 
 //check koneksi
 if (mysqli_connect_errno()) {
-    echo "gagal koneksi ke database";
+    echo mysqli_error($koneksi);
 }
