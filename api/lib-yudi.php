@@ -21,3 +21,9 @@ function array_ignore($ignore_keys, & $array) {
     }
 }
 
+/**
+ * Check if query has record
+ */
+function db_has_record($result) {
+    return mysqli_num_rows($result) > 0;
+}
