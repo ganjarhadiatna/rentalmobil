@@ -1,1 +1,1 @@
-# jangan hapus folder 'config/' sama 'public/'
+# Koneksi database ada di folder 'api/koneksi.php'
