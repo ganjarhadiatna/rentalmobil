@@ -39,6 +39,7 @@
 		$.ajax({
 		  	url: '<?php echo base_url('api/post/mobil.php') ?>',
 			data: fd,
+			dataType: 'json',
 			processData: false,
 			contentType: false,
 			type: 'post',
@@ -50,7 +51,7 @@
 			if (data.status == 'OK') {
 				window.location = '<?php echo base_url("?side=car&path=list_car"); ?>'
 			} else {
-				alert(data);
+				alert(data.message);
 		   		$('#btn-submit').val('Tambahkan Data');
 			}
 		   	//console.log(data);

@@ -1,15 +1,74 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Rental - Detail Mobil</title>
+<script type="text/javascript">
+	var server = '<?php echo base_url(); ?>';
+	var id = '<?php echo $_GET['id_car']; ?>';
 
-	<script type="text/javascript" src="public/js/jquery.js"></script>
-</head>
-<body>
-<div id="body">
-	<?php require "side.php"; ?>
-	<div id="main">	
-		<h1>Detail Mobil</h1>
+	function deleteMobil(id_mobil) {
+		var a = confirm('Yakin ingin menghapus mobil ini?');
+			if (a == true) {
+
+			$.ajax({
+				url: '<?php echo base_url('api/delete/mobil.php'); ?>',
+				type: 'get',
+				dataType: 'json',
+				data: {'id': id_mobil},
+			})
+			.done(function(rest) {
+				if (rest.status == 'OK') {
+					$('#place').html('');
+					getCar(10, 0);
+				} else {
+					alert(rest.message);
+				}
+				//console.log(rest);
+			})
+			.fail(function(e) {
+				//console.log("error");
+				alert(e.responseText);
+			});
+		}
+			
+	}
+
+
+	function getDetail(id) {
+		$.ajax({
+			url: '<?php echo base_url('api/get/mobil.php'); ?>',
+			type: 'get',
+			dataType: 'json',
+			data: {'ids': id},
+		})
+		.done(function(data) {
+			if (data.status == 'OK') {
+				console.log(data.data);
+			} else {
+				console.log(data.message);
+			}
+		})
+		.fail(function(e) {
+			console.log(e.responseText);
+		});
+		
+	}
+	$(document).ready(function() {
+		getDetail(id);
+	});
+</script>
+<div>	
+	<?php 
+		$rest = file_get_contents(base_url('api/get/mobil.php?id='.$_GET['id_car'])); 
+		$data = json_decode($rest, true);
+	?>
+		
+	<?php if ($data['status'] == 'ERROR') { ?>
+
+		<h1 class="pad-bot-20px"><?php echo $data['message']; ?></h1>	
+
+	<?php } else { ?>
+		
+		<?php $car = $data[0]; ?>
+
+		<h1 class="pad-bot-20px">Detail Mobil</h1>
+		<div class="pad-bot-20px"></div>
 		<div>
 			<div class="reservasi">
 				<div class="main">
@@ -18,11 +77,11 @@
 							<H2>Status Mobil</H2>
 						</div>
 						<div class="here">
-							@if ($mb->status == 'Bebas')
+							<?php if ($car['status'] == 'Bebas') { ?>
 								<p class="maincolor">Mobil ini tersedia dan dapat Disewakan.</p>
-							@else
+							<?php } else { ?>
 								<p class="maincolor">Mobil ini sedang Disewakan.</p>
-							@endif
+							<?php } ?>
 						</div>
 					</div>
 					<div class="frame-reservasi">
@@ -35,42 +94,42 @@
 									<tr>
 										<td>ID Mobil</td>
 										<td>:</td>
-										<td>{{ $mb->id_mobil }}</td>
+										<td><?php echo $car['id_mobil']; ?></td>
 									</tr>
 									<tr>
 										<td>Nama Mobil</td>
 										<td>:</td>
-										<td>{{ $mb->nama }}</td>
+										<td><?php echo $car['nama']; ?></td>
 									</tr>
 									<tr>
 										<td>Jenis Mobil</td>
 										<td>:</td>
-										<td>{{ $mb->jenis }}</td>
+										<td><?php echo $car['jenis']; ?></td>
 									</tr>
 									<tr>
 										<td>Merk Mobil</td>
 										<td>:</td>
-										<td>{{ $mb->merk }}</td>
+										<td><?php echo $car['merk']; ?></td>
 									</tr>
 									<tr>
 										<td>Warna Mobil</td>
 										<td>:</td>
-										<td>{{ $mb->warna }}</td>
+										<td><?php echo $car['warna']; ?></td>
 									</tr>
 									<tr>
 										<td>Tahun Mobil</td>
 										<td>:</td>
-										<td>{{ $mb->tahun }}</td>
+										<td><?php echo $car['tahun']; ?></td>
 									</tr>
 									<tr>
 										<td>Status Mobil</td>
 										<td>:</td>
-										<td><strong class="maincolor">{{ $mb->status }}</strong></td>
+										<td><strong class="maincolor"><?php echo $car['status']; ?></strong></td>
 									</tr>
 									<tr>
 										<td>Harga Sewa Mobil</td>
 										<td>:</td>
-										<td>{{ 'Rp. '.$mb->harga_sewa }}</td>
+										<td><?php echo 'Rp. '.$car['harga_sewa'] ?></td>
 									</tr>
 								</tbody>
 							</table>
@@ -86,22 +145,22 @@
 									<tr>
 										<td>No. Polisi</td>
 										<td>:</td>
-										<td>{{ $mb->plat_nomor }}</td>
+										<td><?php echo $car['plat_nomor'] ?></td>
 									</tr>
 									<tr>
 										<td>No. Mesin</td>
 										<td>:</td>
-										<td>{{ $mb->no_mesin }}</td>
+										<td><?php echo $car['no_mesin'] ?></td>
 									</tr>
 									<tr>
 										<td>No. Rangka</td>
 										<td>:</td>
-										<td>{{ $mb->no_rangka }}</td>
+										<td><?php echo $car['no_rangka'] ?></td>
 									</tr>
 									<tr>
 										<td>Isi Silinder</td>
 										<td>:</td>
-										<td>{{ $mb->isi_silinder }}</td>
+										<td><?php echo $car['isi_silinder'] ?></td>
 									</tr>
 								</tbody>
 							</table>
@@ -119,20 +178,25 @@
 				<div class="side">
 					<div class="frame-reservasi">
 						<div class="here">
-							<div class="foto-detail" style="background-image: url(''); background-color: #f0f0f0;"></div>
+							<div class="foto-detail" style="background-image: url(<?php echo base_url('public/img/mobil/'.$car['foto']) ?>); background-color: #f0f0f0;"></div>
 						</div>
 						<div class="here">
-							@if ($mb->status == 'Bebas')
-								<button class="btm btn btn-main-color" onclick="addBook('{{ $mb->id_mobil }}')">Pesan Mobil</button>
-							@endif
-							<button class="btm btn btn-sekunder-color" onclick="editMobil('{{ $mb->id_mobil }}')">Ubah</button>
-							<button class="btm btn btn-sekunder-color" onclick="deleteMobil('{{ $mb->id_mobil }}')">Hapus</button>
+							<?php if ($car['status'] == 'Bebas') { ?>
+								<button class="btm btn btn-main-color" onclick="addBook('<?php echo $car["id_mobil"] ?>')">
+									Pesan Mobil
+								</button>
+								<div class="pad-bot-15px"></div>
+							<?php } ?>
+							<a href="<?php echo base_url('?path=edit_car&id_car='.$car['id_mobil']) ?>">
+								<button class="btm btn btn-sekunder-color" onclick="editMobil('<?php echo $car["id_mobil"] ?>')">Ubah</button>
+							</a>
+							<button class="btm btn btn-sekunder-color" onclick="deleteMobil('<?php echo $car["id_mobil"] ?>')">Hapus</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+
+	<?php } ?>
+
 </div>
-</body>
-</html>

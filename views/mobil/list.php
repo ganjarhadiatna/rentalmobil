@@ -59,12 +59,12 @@
 								</div>\
 							</td>\
 							<td>\
-								<a href="">\
+								<a href="'+server+'?path=detail_car&id_car='+data[i].id_mobil+'">\
 									<button class="bg btn btn-primary-color">\
 										<span class="fa fa-lg fa-eye"></span>\
 									</button>\
 								</a>\
-								<a href="">\
+								<a href="'+server+'?path=edit_car&id_car='+data[i].id_mobil+'">\
 									<button class="bg btn btn-primary-color">\
 										<span class="fa fa-lg fa-pencil"></span>\
 									</button>\

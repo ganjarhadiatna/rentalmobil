@@ -11,13 +11,13 @@ class controllerAuth
     		$rest = modelAuth::login($username, $password);
 
     		if (is_array($rest)) {
-    			
-    			//setting session
+
 	    		session::set('idadmin', $rest[0]);
 
 	    		return session::get('idadmin');
 
     		} else {
+                
     			return $rest;
     		}
 

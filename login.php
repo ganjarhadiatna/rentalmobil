@@ -15,10 +15,6 @@ if (!empty(session::get('idadmin'))) {
 	<meta name=description content="">
 	<meta name=viewport content="width=device-width, initial-scale=1">
 
-	<!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <!-- CSS -->
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="public/css/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="public/css/assets.css">
@@ -40,20 +36,20 @@ if (!empty(session::get('idadmin'))) {
 	        	var password = $('#password').val();
 	        	
 	        	$.ajax({
-	        		url: '<?php echo base_url('api/route.php?type=post&path=login') ?>',
+	        		url: '<?php echo base_url('api/auth/login.php') ?>',
 	        		type: 'post',
+	        		dataType: 'json',
 	        		data: {'username': username, 'password': password},
 	        	})
 	        	.done(function(data) {
-	        		if (data > 0) {
+	        		if (data.status == 'OK') {
 	        			window.location = "<?php echo base_url('?side=home&path=home') ?>";
 	        		} else {
-	        			//alert('Username atau Password salah, mohon ulangi kembali.');
-	        			alert(data);
+	        			alert(data.message);
 	        		}
 	        	})
 	        	.fail(function(e) {
-	        		console.log(e);
+	        		alert(e.responseText);
 	        	});
 	        	
         	});

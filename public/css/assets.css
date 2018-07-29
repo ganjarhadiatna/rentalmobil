@@ -101,33 +101,18 @@ html {
 
 .padding-bottom {
 	padding: 20px 0;
-	color: #555;
-	text-align: center;
-	font-size: 14px;
 }
 .pad-bot-5px {
 	padding-bottom: 5px;
-	color: #555;
-	text-align: center;
-	font-size: 14px;
 }
 .pad-bot-10px {
 	padding-bottom: 10px;
-	color: #555;
-	text-align: center;
-	font-size: 14px;
 }
 .pad-bot-15px {
 	padding-bottom: 15px;
-	color: #555;
-	text-align: center;
-	font-size: 14px;
 }
 .pad-bot-20px {
 	padding-bottom: 20px;
-	color: #555;
-	text-align: center;
-	font-size: 14px;
 }
 
 #alert {

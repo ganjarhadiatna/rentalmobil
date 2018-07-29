@@ -29,10 +29,11 @@ if (empty(session::get('idadmin'))) {
 			var a = confirm('logout sekarang?');
 			if (a == true) {
 				$.ajax({
-	        		url: '<?php echo base_url('api/route.php?type=get&path=logout') ?>',
+	        		url: '<?php echo base_url('api/auth/logout.php') ?>',
+	        		dataType: 'json',
 	        	})
 	        	.done(function(rest) {
-	        		if (rest == 'ok') {
+	        		if (rest.status == 'OK') {
 	        			window.location = "<?php echo base_url('login.php') ?>";
 	        		}
 	        	})
@@ -114,18 +115,28 @@ if (empty(session::get('idadmin'))) {
 			if ($path == 'home') {
 				include 'views/home.php';
 			}
+			
+			//car
 			if ($path == 'new_car') {
 				include 'views/mobil/create.php';
 			}
 			if ($path == 'list_car') {
 				include 'views/mobil/list.php';
 			}
+			if ($path == 'detail_car') {
+				include 'views/mobil/detail.php';
+			}
+			if ($path == 'edit_car') {
+				include 'views/mobil/edit.php';
+			}
+
 			if ($path == 'list_customer') {
 				include 'views/penyewa/list.php';
 			}
 			if ($path == 'list_transaction') {
 				include 'views/transaksi/list.php';
 			}
+
 			if (is_null($path)) {
 				include 'views/home.php';
 			}
