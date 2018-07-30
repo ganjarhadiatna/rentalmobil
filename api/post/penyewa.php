@@ -14,7 +14,21 @@ $status_member = $_POST['status_member'];
 
 $check = file_exists($foto['tmp_name']);
 
-if ($check) 
+/*
+| ----------------------------------------------------------------------------------
+| Input Validation
+| ---------------------------------------------------------------------------------- */
+
+if (! validate_number_only($nomor_identitas)) 		validasiGagal('No. Identitas harus berisi angka saja.');
+if (! validate_name_only($nama))					validasiGagal('Nama harus berisi huruf, spasi dan titik saja.');
+if (! validate_email($email))						validasiGagal('Email tidak valid.');
+if (! validate_number_only($telp)) 					validasiGagal('No. Telp harus berisi angka saja.');
+
+kirimPesanJikaValidasiGagal();
+
+// --------------------------------------------------------------------------------- //
+
+if ($check)
 {
 
 	$chrc = array('[',']','@',' ','+','-','#','*','<','>','_','(',')',';',',','&','%','$','!','`','~','=','{','}','/',':','?','"',"'",'^');
