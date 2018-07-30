@@ -31,7 +31,7 @@
 		fd.append('isi_silinder', slinder);
 		fd.append('harga_sewa', harga);
 		fd.append('tahun', tahun);
-		
+
 		$.each($('#form-publish').serializeArray(), function(a, b) {
 		   	fd.append(b.name, b.value);
 		});
@@ -48,13 +48,24 @@
 			}
 		})
 		.done(function(data) {
+			console.log(data);
 			if (data.status == 'OK') {
 				window.location = '<?php echo base_url("?side=car&path=list_car"); ?>';
 			} else {
-				alert(data.message);
+
+
+				var messageBoxParagraph = document.createElement("p");
+				var messagebox 			= document.getElementById("input-validation-message-box");
+
+				messagebox.innerHTML = ''; //reset
+
+				messageBoxParagraph.innerHTML	= data.message;
+				messagebox.appendChild(messageBoxParagraph);
+				window.scrollTo(0, 0)
+
 		   		$('#btn-submit').val('Tambahkan Data');
 			}
-		   	//console.log(data);
+		   	console.log(data);
 		})
 		.fail(function(e) {
 		  	//alert('error terjadi, mohon ulangi lagi nanti.');
@@ -71,6 +82,8 @@
 			<div class="reservasi">
 				<div class="main">
 					<div class="frame-reservasi">
+						<div id="input-validation-message-box"></div>
+
 						<div class="here">
 							<H2>Data Publik Kendaraan</H2>
 						</div>
