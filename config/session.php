@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
 --
 Code by Ganjar Hadiatna
@@ -6,18 +6,18 @@ Code by Ganjar Hadiatna
 */
 class session
 {
-	public function start()
+	public static function start()
 	{
 		session_start();
 		ini_set('error_reporting', 0);
 		//ini_set('display_errors', 0);
 	}
-	public function set($path, $value)
+	public static function set($path, $value)
 	{
 		self::start();
 		$_SESSION[$path] = $value;
 	}
-	public function get($path)
+	public static function get($path)
 	{
 		self::start();
 		if (isset($_SESSION[$path])) {
@@ -34,7 +34,7 @@ class session
 			self::set($path, '');
 		}
 	}
-	public function end()
+	public static function end()
 	{
 		self::start();
 		session_destroy();
