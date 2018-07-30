@@ -27,7 +27,7 @@ if (! validate_number_only($no_mesin))			validasiGagal('No. Mesin harus berisi a
 if (! validate_name_only($nama))				validasiGagal('Nama Mobil harus berisi huruf, spasi dan titik saja.');
 if (! validate_name_only($jenis))				validasiGagal('Jenis Mobil harus berisi huruf, spasi dan titik saja.');
 if (! validate_alphanumeric_only($merk))		validasiGagal('Merk Mobil harus berisi huruf, spasi dan titik saja.');
-if (! validate_enum($warna, ['merah', 'biru', 'hitam', 'abu'])) validasiGagal('Warna Mobil harus berisi Merah, Biru, Hitam, Abu.');
+if (! validate_enum($warna, ['merah', 'biru', 'hitam', 'abu'])) validasiGagal('Warna Mobil harus berisi merah, biru, hitam, abu. (huruf kecil-besar berpengaruh)');
 if (! validate_format($tahun, 'dddd'))			validasiGagal('Tahun harus berformat YYYY');
 if (! validate_number_only($harga_sewa)) 		validasiGagal('Harga Sewa harus berisi angka saja.');
 
