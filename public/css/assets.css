@@ -135,3 +135,16 @@ html {
 #alert #message {
 	color: #ff0000;
 }
+
+#input-validation-message-box p {
+	display: block;
+	border-radius: 4px;
+	background-color: #d88787;
+	padding: 15px;
+	box-sizing: border-box;
+	color: white;
+    line-height: 1.5;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 20px;
+}
