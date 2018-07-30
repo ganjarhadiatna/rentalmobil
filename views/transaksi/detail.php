@@ -286,10 +286,6 @@
 							</a>
 							<button class="btm btn btn-sekunder-color" onclick="deleteTransaksi('{{ $sw->id_sewa }}')">Hapus</button>
 							<div class="pad-bot-15px"></div>
-							<button class="btm btn btn-main-color">
-								<span class="fa fa-lg fa-print"></span>
-								Cetak Laporan
-							</button>
 						</div>
 					</div>
 				</div>
