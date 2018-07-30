@@ -82,10 +82,7 @@ function validate_number_only($input) {
 }
 
 function validate_alphanumeric_only($input) {
-    $validation1 = validate_name_only($input) == inputValid();
-    $validation2 = validate_number_only($input) == inputValid();
-
-    if ($validation1 == inputNotValid() AND $validation2 == inputNotValid()) {
+    if (preg_match('/[^a-zA-Z0-9.\s]+/', $input)) {
         return markAsInvalid();
     }
     return markAsValid();
