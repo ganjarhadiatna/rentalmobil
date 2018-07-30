@@ -86,7 +86,15 @@
 		   	if (data.status == 'OK') {
 		   		window.location = '<?php echo base_url("?side=transaction&path=list_transaction"); ?>';
 		   	} else {
-				alert(data.message);
+				var messageBoxParagraph = document.createElement("p");
+				var messagebox 			= document.getElementById("input-validation-message-box");
+
+				messagebox.innerHTML = ''; //reset
+
+				messageBoxParagraph.innerHTML = data.message;
+				messagebox.appendChild(messageBoxParagraph);
+				window.scrollTo(0, 0);
+
 		   		$('#btn-submit').val('Tambahkan Data');
 		   	}
 		   	//console.log(data);
@@ -170,6 +178,8 @@
 	<div class="reservasi">
 		<div class="main">
 			<div class="frame-reservasi">
+				<div id="input-validation-message-box"></div>
+
 				<div class="here nav">
 					<H2>Detail Kendaraan</H2>
 					<button class="choose btn btn-main-color" type="button" onclick="carList('open')">
