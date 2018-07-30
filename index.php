@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once 'config/url.php';
 require_once 'config/session.php';
 
@@ -96,19 +96,19 @@ if (empty(session::get('idadmin'))) {
 					<a href="<?php echo base_url('?side=car&path=list_car'); ?>">
 						<li id="car">
 							<span class="icn fa fa-lg fa-car"></span>
-							<span class="ttl">Daftar Kendaraan</spamn>
+							<span class="ttl">Data Kendaraan</spamn>
 						</li>
 					</a>
 					<a href="<?php echo base_url('?side=customer&path=list_customer'); ?>">
 						<li id="customer">
 							<span class="icn fa fa-lg fa-users"></span>
-							<span class="ttl">Daftar Peminjam</spamn>
+							<span class="ttl">Data Peminjam</spamn>
 						</li>
 					</a>
 					<a href="<?php echo base_url('?side=transaction&path=list_transaction'); ?>">
 						<li id="transaction">
 							<span class="icn fa fa-lg fa-shopping-cart"></span>
-							<span class="ttl">Daftar Transaksi</spamn>
+							<span class="ttl">Data Transaksi</spamn>
 						</li>
 					</a>
 				</div>
@@ -128,7 +128,7 @@ if (empty(session::get('idadmin'))) {
 			if ($path == 'home') {
 				include 'views/home.php';
 			}
-			
+
 			//car
 			if ($path == 'new_car') {
 				include 'views/mobil/create.php';
