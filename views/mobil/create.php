@@ -59,9 +59,9 @@
 
 				messagebox.innerHTML = ''; //reset
 
-				messageBoxParagraph.innerHTML	= data.message;
+				messageBoxParagraph.innerHTML = data.message;
 				messagebox.appendChild(messageBoxParagraph);
-				window.scrollTo(0, 0)
+				window.scrollTo(0, 0);
 
 		   		$('#btn-submit').val('Tambahkan Data');
 			}
