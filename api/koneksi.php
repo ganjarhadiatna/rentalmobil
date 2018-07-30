@@ -9,5 +9,8 @@ $koneksi=mysqli_connect(
 
 //check koneksi
 if (mysqli_connect_errno()) {
-    echo mysqli_error($koneksi);
+    exit(json_encode([
+        'status' => 'ERROR',
+        'message' => mysqli_error($koneksi),
+    ]));
 }
