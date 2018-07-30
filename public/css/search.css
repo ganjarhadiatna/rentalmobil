@@ -29,3 +29,8 @@
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	box-shadow: 0 0 0 0;
 }
+
+#ctr-search {
+	background-color: #f8f8f8;
+	border-left: 1px solid #ddd;
+}
